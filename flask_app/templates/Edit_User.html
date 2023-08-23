@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+        {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any messages -->
+        {% for message in messages %}
+        <!-- loop through the messages -->
+        <p>{{message}}</p> <!-- display each message in a paragraph tag -->
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+        <a href="/view/user/info/">Go Back</a>
+        <a href="/home">Home</a>
+    <form action="/edit/user/info" method="POST" enctype="multipart/form-data">
+
+        <label for="first_name">First_name</label>
+        <input id="first_name" name="first_name" value="{{user.first_name}}" type="text">
+
+        <label for="last_name">Last_name</label>
+        <input id="last_name" name="last_name" value="{{user.last_name}}" type="text">
+        
+        <label for="location">Location</label>
+        <input id="location" name="location" value="{{user.location}}" type="text">
+        
+        <label for="email">Email</label>
+        <input id="email" name="email" value="{{user.email}}" type="text">
+        
+    
+        <label for="profile_pic">Profile_Pic</label>
+        <input id=profile_pic" name="profile_pic" value="{{user.profile_pic}}" type="file">
+        <button type="submit">
+
+        </button>
+    </form>
+</body>
+</body>
+</html>

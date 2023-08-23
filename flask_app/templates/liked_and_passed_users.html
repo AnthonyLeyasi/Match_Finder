@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="/home">Home</a>
+    {% if session.new_csrf_token %}
+    <input type="hidden" name="csrf_token" value="{{ session.get_csrf_token() }}">
+{% endif %}
+
+    
+        <h1>Liked Users</h1>
+        <ul>
+            {% for user in liked_users %}
+            <li>Name: {{ user.first_name }} - Miles Away: {{ user.location }} - Age: {{ user.age }}</li>
+
+            <form action="/unlike/liked/user/{{user.id}}" method="post">
+                <button type="submit">Un Like User</button>
+            </form>
+            
+            
+            <a href="/view/user/{{user.id}}">View Account</a>
+
+            {% endfor %}
+        </ul>
+        <h1>Passed Users</h1>
+<ul>
+    {% for user in passed_users %}
+    <li>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <h5 class="card-title">{{ user.first_name }}</h5>
+                <p class="card-text">
+                    <strong>Age:</strong> {{ user.age }}<br>
+                    <strong>Location:</strong> {{ user.location }}<br>
+                    <strong>Age:</strong> {{ user.age }}
+                    <form action="/unpass/user/{{user.id}}" method="post">
+                        <button type="submit">Remove Pass</button>
+                    </form>
+
+                    <button type="submit">
+
+                        <a href="/view/user/{{user.id}}">View Account</a>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </li>
+{% endfor %}
+
+</ul>
+        </ul>
+        <h1>Users Who've Liked Me</h1>
+        <ul>
+            {% for user in liked_by_users %}
+            <h5>{{user.first_name}}</h5>
+            <a href="/view/user/{{user.id}}">View Account</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</html>

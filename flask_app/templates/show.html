@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Information</title>
+</head>
+<body>
+	<a href="/home">Home</a>
+	<div>
+		<h1>User{{user.id}}</h1>
+		<h2>First Name: {{user.first_name}}</h2>
+		<h2>Last Name: {{user.last_name}}</h2>
+		<h2>Location: {{user.location}}</h2>
+		<h2>Email: {{user.email}}</h2>
+		<h2>Gender:{{user.gender}}</h2>
+		<h2>Profile Picture: <img src="{{ url_for('static', filename=user.profile_pic) }}" alt="Profile Picture"></h2>
+		<a href="/destroy/users/{{ user.id }}">Delete Account</a>
+		<a href="/edit/user/info">Edit Account</a>
+
+	</div>
+</body>
+</html>

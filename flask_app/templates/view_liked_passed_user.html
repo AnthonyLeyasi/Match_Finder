@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View liked users Account</title>
+</head>
+<body>
+    <h1>{{ user.first_name }}'s Profile</h1>
+    <p>Location: {{ user.location }}</p>
+    <p>Age: {{ user.age }}</p>
+    <p>Gender {{user.gender}}</p>
+    <img src="{{ user.profile_pic }}" alt="{{ user.first_name }}'s Profile Picture" />
+
+    
+    <a href="/home">Back to Home</a>
+    <a href="/liked/passed/users">Back</a>
+</body>
+</html>

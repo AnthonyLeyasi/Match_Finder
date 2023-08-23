@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Chat</title>
+</head>
+<body>
+    <a href="/message/users">Back</a>
+    <a href="/home">Home</a>
+    <div>
+        
+    </div>
+    <div>
+        <h2>{{ session['user_id'] }}</h2>
+        <h2>{{ user_id_recipient }}</h2>
+        
+        {% for message in messages %}
+            {% if message.user_id_sender == session['user_id'] %}
+                <p>Sent by You: {{ message.text }}</p>
+            {% else %}
+                <p>Sent by Recipient: {{ message.text }}</p>
+            {% endif %}
+        {% endfor %}
+        
+        <form action="/message/users/text/send" method="POST">
+            <div class="text">
+        
+            </div>
+            <label for="Message">Message</label>
+            <input type="text" name="text"> 
+            <input type="hidden" name="user_id_sender" value="{{ session['user_id'] }}">
+            <input type="hidden" name="user_id_recipient" value="{{ user_id_recipient }}">
+        
+            <button type="submit">Send!</button>
+        </form>
+    </div>
+</body>
+</html>
